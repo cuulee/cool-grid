@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+'use strict';
+
+const program = require('commander');
+const config = require('./package.json');
+
+program
+.option('-s, --size <n>', 'Size of the grid boxes in square kilometers')
+.option('-f, --format <value>', 'Output format, geojson or mbtiles')
+.version(config.version)
+.parse(process.argv);
