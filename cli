@@ -3,9 +3,11 @@
 
 const program = require('commander');
 const config = require('./package.json');
+const graticule = require('./');
 
 program
-.option('-s, --size <n>', 'Size of the grid boxes in square kilometers')
-.option('-f, --format <value>', 'Output format, geojson or mbtiles')
 .version(config.version)
+.option('-i, --interval <n>', 'Interval of graticules')
 .parse(process.argv);
+
+console.log(JSON.stringify(graticule(program.interval)));
