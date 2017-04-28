@@ -8,6 +8,10 @@ const graticule = require('./');
 program
 .version(config.version)
 .option('-i, --interval <n>', 'Interval of graticules')
+.option('-n, --newlines', 'Use newline-delimited format for output')
 .parse(process.argv);
 
-console.log(JSON.stringify(graticule(program.interval)));
+const geojson = graticule(program.interval);
+const output = program.newlines ? geojson.features.map(JSON.stringify).join('\n') : JSON.stringify(geojson);
+
+console.log(output);
